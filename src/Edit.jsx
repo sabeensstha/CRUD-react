@@ -7,40 +7,25 @@ import details from "./array";
 export default function Edit() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [id, setId] = useState();
+  const [id, setId] = useState('');
   let history = useNavigate();
+
   const index = details
   .map((e) => {
-    return e.Name ;
+    return e.id ;
   })
-  .indexOf(name);
+  .indexOf(Number(id));
   // getting an index of an entry with an id
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log(details[index]);
-    if(details.id === id ){
-      details[index] ={
+    console.log(index,name,password);
+   
+    details[index] = {
+      ...details[index],
       Name: name,
-      Password:password
-    }
-    }
-
-  
-  // {details[index].map((detail) => {
-  //   if(detail.name === name){
-  //     id: id;
-  //     Name: name;
-  //     Password: password;
-  //   }
-  // } )};
-    // details[index] = {
-    //   ...details[index],
-    //   id: Number(id),
-    //   Name: name,
-    //   Password: password,
-    // };
+      Password: password,
+    };
     // details[index] = { Name: name, Password: password,id:id,...details[index] };
-    console.log(details[index]);
     history('/')
 
     
